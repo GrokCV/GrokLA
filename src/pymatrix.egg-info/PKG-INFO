@@ -1,0 +1,19 @@
+Metadata-Version: 2.4
+Name: pymatrix
+Version: 0.1.0
+Summary: Pure-Python linear algebra Matrix class (no third-party dependencies).
+Author: Your Name
+License: MIT
+Project-URL: Homepage, https://github.com/yourname/pymatrix
+Project-URL: Repository, https://github.com/yourname/pymatrix
+Project-URL: Issues, https://github.com/yourname/pymatrix/issues
+Keywords: linear-algebra,matrix,linalg
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file
+
+这是一个纯 Python 实现的线性代数矩阵库

@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/pymatrix/__init__.py
+src/pymatrix/matrix.py
+src/pymatrix/py.typed
+src/pymatrix.egg-info/PKG-INFO
+src/pymatrix.egg-info/SOURCES.txt
+src/pymatrix.egg-info/dependency_links.txt
+src/pymatrix.egg-info/top_level.txt
+tests/test_basic.py

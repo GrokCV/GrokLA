@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/GrokLA.egg-info/PKG-INFO
+src/GrokLA.egg-info/SOURCES.txt
+src/GrokLA.egg-info/dependency_links.txt
+src/GrokLA.egg-info/top_level.txt
+src/pymatrix/__init__.py
+src/pymatrix/matrix.py
+src/pymatrix/py.typed
+tests/test_basic.py

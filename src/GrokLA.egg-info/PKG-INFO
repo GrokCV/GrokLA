@@ -1,0 +1,84 @@
+Metadata-Version: 2.4
+Name: GrokLA
+Version: 0.1.2
+Summary: Pure-Python linear algebra Matrix class (no third-party dependencies).
+Author: Your Name
+License: MIT
+Project-URL: Homepage, https://github.com/yourname/pymatrix
+Project-URL: Repository, https://github.com/yourname/pymatrix
+Project-URL: Issues, https://github.com/yourname/pymatrix/issues
+Keywords: linear-algebra,matrix,linalg
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file
+
+
+# GrokLA: 《线性代数那些事儿》函数库
+
+GrokLA (Grok Linear Algebra) 是《线性代数那些事儿》一书的配套函数库。
+
+本书与本代码库的核心理念在于：跨越抽象理论与工程实践的鸿沟。为了让读者能够真正接触到矩阵运算的底层逻辑，本库坚持 100% 纯 Python 实现，零第三方依赖（无 NumPy 或 SciPy）。通过查阅和调用本库的 API，读者可以直观地理解基础矩阵运算、方程组求解以及面向工程应用（如主成分分析 PCA）的特征值提取是如何在计算机底层实现的。
+
+## 安装指南
+
+在终端或命令行中运行以下命令即可安装：
+
+```bash
+pip install GrokLA
+```
+
+要求：Python 3.9 及以上版本。
+
+## 核心 API 手册
+
+所有的核心功能都封装在 `Matrix` 类中，语法设计贴近现代 Python 规范，并支持直观的运算符重载。以下是本库提供的全部可用函数及其功能说明：
+
+### 1. 运算符重载 (Magic Methods)
+
+- **`__add__(other)`**: 支持 `A + B`。执行矩阵加法。
+- **`__sub__(other)`**: 支持 `A - B`。执行矩阵减法。
+- **`__mul__(other)`**: 支持标量乘法 `A * k` 与矩阵乘法 `A * B`。
+- **`__rmul__(other)`**: 支持反向标量乘法 `k * A`。
+- **`__matmul__(other)`**: 支持 Python 现代矩阵乘法语法 `A @ B`。
+
+### 2. 矩阵生成与属性提取
+
+- **`shape()`**: 获取矩阵维度，返回格式为 `(行数, 列数)` 的元组。
+- **`clone()`**: 创建当前矩阵的深拷贝，防止在复杂的工程运算中意外修改原数据。
+- **`Matrix.eye(n)`**: 类方法。生成一个大小为 n x n 的单位矩阵。
+- **`Matrix.zeros(m, n)`**: 类方法。生成一个大小为 m x n 的全零矩阵。
+
+### 3. 基础代数运算
+
+- **`add(other)`**: 矩阵加法，要求参与运算的两矩阵维度完全一致。
+- **`sub(other)`**: 矩阵减法，要求参与运算的两矩阵维度完全一致。
+- **`scale(k)`**: 标量乘法，将矩阵中的每一个元素乘以常数 k。
+- **`dot(other)`**: 矩阵乘法。严格遵循矩阵乘法的内维度匹配规则。
+
+### 4. 矩阵变换与特征提取
+
+- **`transpose()`**: 计算并返回当前矩阵的转置矩阵。
+- **`trace()`**: 计算方阵的迹 (Trace)，即主对角线元素之和。
+- **`rank()`**: 计算矩阵的秩。底层采用带容差控制的高斯消元法，数值稳定性极高。
+
+### 5. 核心线性代数定理实现
+
+- **`det()`**: 计算方阵的行列式。采用带部分主元选择的高斯消元法，大幅优化了计算复杂度与数值稳定性。
+- **`minor(i, j)`**: 计算指定位置的余子式，即去除第 i 行与第 j 列后子矩阵的行列式。
+- **`cofactor(i, j)`**: 计算指定位置的代数余子式。
+- **`adjoint()`**: 计算并返回伴随矩阵。
+- **`inv()`**: 计算逆矩阵。基于高斯-若尔当消元法 (Gauss-Jordan Elimination) 实现，包含对奇异矩阵的安全校验。
+
+### 6. 高阶工程应用
+
+- **`solve(b)`**: 求解线性方程组 Ax = b。支持传入一维列表或列向量矩阵，直接返回最优解矩阵。
+- **`decompose()`**: 执行 LU 分解 (A = LU)。将方阵拆解为一个下三角矩阵 L 和一个上三角矩阵 U，用于优化工程实践中高频方程组求解的计算开销。
+- **`power_iteration(num_simulations)`**: 使用幂法提取方阵的主特征值（绝对值最大）及其对应的主特征向量。这是降维算法（如 PCA）底层极其核心的基础算法。
+
+## 许可证
+
+本项目采用 MIT License 开源协议。
